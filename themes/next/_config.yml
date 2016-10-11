@@ -238,7 +238,7 @@ mathjax:
 #baidu_analytics:
 
 # Duoshuo ShortName
-#duoshuo_shortname:
+#duoshuo_shortname:walkstep
 
 # Disqus
 #disqus_shortname:
@@ -382,3 +382,7 @@ images: images
 
 # Theme version
 version: 5.0.1
+
+reward_comment: 请walkstep喝奶茶
+wechatpay: http://oetpv7kic.bkt.clouddn.com/wechat-reward-image.png
+alipay: http://oetpv7kic.bkt.clouddn.com/alipay-reward-image.png

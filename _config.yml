@@ -72,3 +72,6 @@ deploy:
   type: git
   repository: https://github.com/walkstep/walkstep.github.io.git
   branch: master
+
+# Duoshuo ShortName
+duoshuo_shortname: walkstep

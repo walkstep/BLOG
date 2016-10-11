@@ -42,6 +42,16 @@ blog是你用来存放hexo文件的文件夹，cd到blog下，执行：
 ```
 $ npm install
 ```
+新建完成后，blog文件夹的目录如下:
+
+```
+_config.yml    // 站点的配置信息
+package.json   // 应用程序的信息
+scanffolds     // 模板文件夹
+source         // 存放用户资源的文件夹
+themes         // 主题文件夹，Hexo会根据主题生成静态页面
+```
+
 执行如下命令，启动本地服务器：
 
 ```
@@ -62,7 +72,7 @@ $ hexo s
 ```
 deploy:
     type: git
-    repository: https://github.com/walkstep/walkstep.github.io.git
+    repository: https://github.com/walkstep/walkstep.github.io.git  // 这个地方填写自己的仓库地址
     branch: master
 ```
 编辑完成后，按Esc键，输入：wq保存退出
@@ -118,9 +128,139 @@ $ ssh-keygen -t rsa -C "your_email@example.com"
 ```
 $ git clone https://github.com/iissnan/hexo-theme-next themes/next
 ```
+你也可以在themes下建立一个next文件夹，然后将下载的NexT主题压缩包解压到next文件夹下
+
 在blog目录下，使用vim命令编辑_config.yml，找到theme，修改为：
 
 ```
 theme: next
 ```
+> 需要注意的是，blog文件夹下会包含两个_config.yml，一个位于站点根目录下，也就是刚才创建的blog目录下，主要包含Hexo本身的配置；另一个位于主题目录下，主要用于配置主题相关的选项。
+
+#### 在_config.yml中修改配置信息
+注意冒号后面一定要有空格
+
+##### 修改站点目录下的_config.yml
+```
+# Site
+title: WalkStep's Blog                   // 站点标题
+subtitle:                                // 站点副标题
+description: First, crawl. Then, walk!   // 站点描述
+author: WalkStep                         // 你的名字
+language: zh-Hans                        // 站点语言
+timezone:                                // 站点时区
+avatar: /uploads/avatar.png              // 头像
+```
+```
+highlight:
+  enable: true
+  line_number: true
+  auto_detect: true
+  tab_replace:
+
+如果要使代码高亮，需要将auto_detect改为true，还可以选择高亮主题，修改主题目录下的_config.yml会提到
+```
+```
+# Extensions
+## Plugins: https://hexo.io/plugins/
+## Themes: https://hexo.io/themes/
+theme: next
+
+# Deployment
+## Docs: https://hexo.io/docs/deployment.html
+deploy:
+  type: git
+  repository: https://github.com/walkstep/walkstep.github.io.git
+  branch: master
+  
+主题和部署上面已经说过
+```
+##### 修改主题目录下的_config.yml
+```
+menu:
+  home: /
+  categories: /categories
+  about: /about
+  archives: /archives
+  tags: /tags
+  #commonweal: /404.html
+  
+menu用来设置菜单，我这个地方设置了5个菜单选项，分别是首页、分类、关于、归档和标签，不让显示
+的菜单选项可以用#注释掉
+```
+```
+# Schemes
+#scheme: Muse
+scheme: Mist
+#scheme: Pisces
+
+schemes用来设置你使用NexT的样式主题，我使用的是Mist，这里有三种样式，选择一项，用#号注释另外两项
+```
+```
+# Code Highlight theme
+# Available value:
+#    normal | night | night eighties | night blue | night bright
+# https://github.com/chriskempson/tomorrow-theme
+highlight_theme: night eighties
+
+highlight_theme用来设置代码高亮的主题(默认是normal)
+```
+```
+# Automatically Excerpt. Not recommand.
+# Please use <!-- more --> in the post to control excerpt accurately.
+auto_excerpt:
+  enable: true
+  length: 150
+  
+这里用来设置是否显示[阅读全文]，将enable改为true(默认是false)，设置length的值来决定显示字符的长
+度，不过Hexo推荐使用<!-- more -->来设置(的确后者更好用，你想显示多少就显示多少)，如果使用推荐的
+方式的话，那么enable得设置为false，以免冲突
+```
+主题_config.yml基本就只需要设置这么多，如果你想使自己的站点功能更为完善的话，会设置里面的其他一些选项，后续会讲到
+
+Hexo和主题配置设置完后，我们现在来说说怎样写文章和发布文章
+
+#### 文章撰写和发布
+　　终端里cd到blog目录下，执行：
+
+```
+$ hexo new "FirstArticle"
+```
+这时会在blog/source/_posts目录下生成FirstArticle.md文件，尽量不要使用中文来命令，方便以后设置超链接跳转。vim命令可以编辑文章，不过我想你应该不会使用的，不信你试试喽，推荐使用[MacDown](http://macdown.uranusjr.com/)，因为使用的是Markdown语法，所以你可以点击[这里](http://www.jianshu.com/p/q81RER)，还有[这里](http://www.markdown.cn/)，来简单学习一下Markdown的使用
+编辑完成后，保存。在终端里依次执行：
+
+```
+$ hexo clean  // 清除缓存文件 (db.json) 和已生成的静态文件 (public)
+```
+```
+$ hexo g     // 生成静态文件
+```
+如果你想在本地服务器上看一下效果，可以执行：
+
+```
+$ hexo s    // 启动本地服务器
+```
+打开网址[http://localhost:4000](http://localhost:4000)，你就可以看到你写的文章了，当你修改文章时，不需要反复执行生成静态文件和启动本地服务器命令，直接保存修改的文章，然后刷新浏览器就可以看到修改后的文章了
+将文章部署到Github上, 执行：
+
+```
+$ hexo d    // 部署网点
+```
+打开你的Github个人主页，[https://walkstep.github.io](https://walkstep.github.io)，将walkstep替换成你的Github用户名，这样你就可以在Github上访问你的站点，看到你写的文章(部署到Github上有时稍慢，毕竟是免费的)
+
+#### Tips
+- [NexT主题使用](http://theme-next.iissnan.com/getting-started.html)
+- [Next主题常见问题](http://theme-next.iissnan.com/faqs.html)
+- [Hexo中文文档](https://hexo.io/zh-cn/docs/)
+- [给博客添加文章阅读量统计功能](https://notes.wanghao.work/2015-10-21-%E4%B8%BANexT%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0%E6%96%87%E7%AB%A0%E9%98%85%E8%AF%BB%E9%87%8F%E7%BB%9F%E8%AE%A1%E5%8A%9F%E8%83%BD.html#%E9%85%8D%E7%BD%AELeanCloud)
+- [使用七牛云作为图床插入图片](http://developer.qiniu.com/article/kodo/kodo-first/quickstart.html)
+- [备份Hexo博客源文件，再也不用担心换电脑](https://notes.wanghao.work/2015-04-06-%E5%A4%87%E4%BB%BDHexo%E5%8D%9A%E5%AE%A2%E6%BA%90%E6%96%87%E4%BB%B6.html)
+- [新建文章时自动打开编辑器](https://notes.wanghao.work/2015-06-29-Hexo%E6%B7%BB%E5%8A%A0%E6%96%87%E7%AB%A0%E6%97%B6%E8%87%AA%E5%8A%A8%E6%89%93%E5%BC%80%E7%BC%96%E8%BE%91%E5%99%A8.html)
+- [添加多说评论系统](http://theme-next.iissnan.com/third-party-services.html), [Hexo使用多说教程](http://dev.duoshuo.com/threads/541d3b2b40b5abcd2e4df0e9)
+
+**欢迎吐槽，同时也欢迎转载，如转载请保留原文地址：[https://walkstep.github.io/2016/10/10/BuildHexo](https://walkstep.github.io/2016/10/10/BuildHexo)**
+
+**更新于2016年10月11日**
+
+
 
