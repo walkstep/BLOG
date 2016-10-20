@@ -5,7 +5,7 @@
 # Site
 title: WalkStep's Blog
 subtitle:
-description: First, crawl. Then, walk!
+description: 努力打怪升级
 author: WalkStep
 language: zh-Hans
 timezone:
@@ -72,6 +72,9 @@ deploy:
   type: git
   repository: https://github.com/walkstep/walkstep.github.io.git
   branch: master
+  # type: git
+  # repository: https://git.coding.net/walkstep/walkstep.git
+  # branch: master
 
 # Duoshuo ShortName
 duoshuo_shortname: walkstep
