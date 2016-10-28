@@ -1,8 +1,8 @@
 ---
 title: 说说通知(NSNotification)的使用
 date: 2016-10-21 10:33:32
-tags: [ios, NSNotification]
-categroies: ios
+tags: [iOS, NSNotification]
+categories: iOS
 ---
 #### NSNotification
 　　打开Xcode，进入NSNotification，你可以看到
@@ -189,6 +189,6 @@ categroies: ios
 **欢迎吐槽，同时也欢迎转载，如转载请保留原文地址：
 [https://walkstep.github.io/2016/10/21/NSNotification](https://walkstep.github.io/2016/10/21/NSNotification)**
 　　
-	
+**更新于2016年10月21日**
 
 　　

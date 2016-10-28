@@ -2,7 +2,7 @@
 title: Reveal集成指南
 date: 2016-10-13 10:45:13
 categories: 翻译
-tags: [折腾, reveal]
+tags: [折腾, reveal, iOS]
 ---
 　　很早就听过Reveal，对iOS Developer来说简直是一款神器。这次有时间打算体验一下Reveal，于是去官网看了下，没有中文使用文档，google了一下使用方法，博客里写得大同小异，有的简直就是一模一样，关键是有些还讲不清楚。于是，就产生了下面的文章。
 ***
